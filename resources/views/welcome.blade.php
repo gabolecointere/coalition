@@ -47,11 +47,11 @@
               <td>Total value number</td>
             </tr>
           </thead>
-          @if(isset($items))
-          <?php  $totalqty = 0  ?>
-          <?php  $totalprice = 0  ?>
-          <?php  $totalproduct = 0  ?>
           <tbody>
+            @if(isset($items))
+            <?php  $totalqty = 0  ?>
+            <?php  $totalprice = 0  ?>
+            <?php  $totalproduct = 0  ?>
             @foreach ($items as $item)
             <?php  $ditem = json_decode($item, true)  ?>
               <tr>
@@ -65,15 +65,15 @@
               <?php  $totalprice += $ditem['price']  ?>
               <?php  $totalproduct += $ditem['qty']*$ditem['price']  ?>
             @endforeach
+            @endif
             <tr>
               <td></td>
-              <td id="totalqty">{{ $totalqty }}</td>
-              <td id="totalprice">{{ $totalprice }}</td>
+              <td id="totalqty">{{ isset($totalqty) ? $totalqty : 0 }}</td>
+              <td id="totalprice">{{ isset($totalprice) ? $totalprice : 0 }}</td>
               <td></td>
-              <td id="totalproduct">{{ $totalproduct }}</td>
+              <td id="totalproduct">{{ isset($totalproduct) ? $totalproduct : 0 }}</td>
             </tr>
           </tbody>
-          @endif
         </table>
       </div>
 
