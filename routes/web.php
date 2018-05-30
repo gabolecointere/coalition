@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('items');
 });
+
+Route::resource('items', 'ItemController')->only([
+  'index', 'store', 'update'
+]);
